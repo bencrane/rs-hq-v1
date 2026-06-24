@@ -97,9 +97,7 @@ const ThesisDetailView = ({ thesisId, onBack }) => {
   const data = THESIS_DATA[thesisId];
   const [activeSectionIdx, setActiveSectionIdx] = useState(0);
   
-  // Instantly jump to top when rendering the thesis detail to prevent loading scrolled-down
   useEffect(() => {
-    window.scrollTo(0, 0);
     setActiveSectionIdx(0); // Reset pagination when thesis changes
   }, [thesisId]);
 
@@ -121,8 +119,7 @@ const ThesisDetailView = ({ thesisId, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen animate-in fade-in duration-700 pb-32">
-      <div className="px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 max-w-4xl">
+    <div className="px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 max-w-4xl min-h-[600px] animate-in fade-in duration-300 pb-32">
         <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">
           Platform: {data.title}
         </span>
@@ -184,25 +181,17 @@ const ThesisDetailView = ({ thesisId, onBack }) => {
           </div>
         </div>
 
-      </div>
     </div>
   );
 };
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState('firm');
   const [activeThesis, setActiveThesis] = useState(null);
 
-  // Smooth scroll handler for elegant navigation
-  const scrollTo = (id) => {
-    if (activeThesis) {
-      setActiveThesis(null);
-      // Need a slight delay to allow React to render the main view before scrolling
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleTabClick = (id) => {
+    setActiveTab(id);
+    setActiveThesis(null);
   };
 
   return (
@@ -212,7 +201,7 @@ export default function App() {
       {/* Fixed Left Navigation Pane */}
       <nav className="w-full md:w-1/3 lg:w-1/4 md:fixed md:h-screen p-8 md:p-16 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/[0.04] bg-[#040a18] z-40 shadow-[4px_0_24px_rgba(0,0,0,0.2)]">
         <div>
-          <h1 className="font-serif text-2xl lg:text-3xl tracking-wide font-medium text-white mb-1 cursor-pointer" onClick={() => scrollTo('firm')}>
+          <h1 className="font-serif text-2xl lg:text-3xl tracking-wide font-medium text-white mb-1 cursor-pointer" onClick={() => handleTabClick('firm')}>
             Rare Structure
           </h1>
           <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#94a3b8]">Merchant Bank</span>
@@ -228,8 +217,8 @@ export default function App() {
           ].map((item) => (
             <button 
               key={item.id}
-              onClick={() => scrollTo(item.id)}
-              className="text-left font-serif text-lg text-[#94a3b8] hover:text-white transition-colors italic tracking-wide"
+              onClick={() => handleTabClick(item.id)}
+              className={`text-left font-serif text-lg transition-colors italic tracking-wide ${activeTab === item.id ? 'text-white' : 'text-[#94a3b8] hover:text-white'}`}
             >
               {item.label}
             </button>
@@ -240,138 +229,145 @@ export default function App() {
         <div className="hidden md:block h-[44px]"></div>
       </nav>
 
-      {/* Main Content Scroll Area */}
-      <main className="w-full md:w-2/3 lg:w-3/4 md:ml-auto min-h-screen">
-        
-        {activeThesis ? (
-          <ThesisDetailView thesisId={activeThesis} onBack={() => setActiveThesis(null)} />
-        ) : (
-          <>
-            {/* Unified Structural Paddings across all sections: px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 */}
-            <section id="firm" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">The Firm</span>
-              <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-light leading-[1.05] tracking-tight mb-12">
-                <span className="block whitespace-nowrap">Systematic origination.</span>
-                <span className="block text-[#94a3b8] italic whitespace-nowrap">Institutional capital.</span>
-              </h2>
-              <div className="max-w-xl">
-                <p className="font-sans text-sm md:text-base text-[#cbd5e1] leading-loose font-light">
-                  Rare Structure operates exclusively at the intersection of quantitative intelligence and senior-secured credit. We identify, structure, and syndicate private transaction flow for a select consortium of institutional partners. We do not accept unsolicited mandates.
-                </p>
-              </div>
-            </section>
-
-            <section id="structure" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Architecture</span>
-              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
-                The holding company model isolates operational friction from capital allocation.
-              </h2>
-              <div className="grid md:grid-cols-2 gap-16 max-w-3xl">
+      {/* Main Content Area */}
+      <main className="w-full md:w-2/3 lg:w-3/4 md:ml-auto min-h-screen flex flex-col">
+        <div className="flex-grow">
+          {activeThesis ? (
+            <ThesisDetailView thesisId={activeThesis} onBack={() => setActiveThesis(null)} />
+          ) : (
+            <div className="px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 max-w-4xl min-h-[600px] animate-in fade-in duration-300 pb-32">
+              {activeTab === 'firm' && (
                 <div>
-                  <span className="font-serif text-2xl text-white mb-4 block italic">Tactical Subsidiaries</span>
-                  <p className="font-sans text-sm text-[#cbd5e1] leading-relaxed font-light">
-                    Our owned-and-operated brands function as the market interface. They originate opportunities in government contracting, heavy equipment, and commercial logistics directly from operators.
-                  </p>
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">The Firm</span>
+                  <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-light leading-[1.05] tracking-tight mb-12">
+                    <span className="block whitespace-nowrap">Systematic origination.</span>
+                    <span className="block text-[#94a3b8] italic whitespace-nowrap">Institutional capital.</span>
+                  </h2>
+                  <div className="max-w-xl">
+                    <p className="font-sans text-sm md:text-base text-[#cbd5e1] leading-loose font-light">
+                      Rare Structure operates exclusively at the intersection of quantitative intelligence and senior-secured credit. We identify, structure, and syndicate private transaction flow for a select consortium of institutional partners. We do not accept unsolicited mandates.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <span className="font-serif text-2xl text-white mb-4 block italic">The Apex Entity</span>
-                  <p className="font-sans text-sm text-[#cbd5e1] leading-relaxed font-light">
-                    Rare Structure serves solely as the structuring and routing layer. We translate raw operational flow into pristine, senior-secured credit instruments.
-                  </p>
-                </div>
-              </div>
-            </section>
+              )}
 
-            <section id="theses" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Investment Logic</span>
-              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
-                Active Investment Theses.
-              </h2>
-              
-              <div className="space-y-16 max-w-2xl">
-                {Object.entries(THESIS_DATA).map(([id, item]) => (
-                  <div 
-                    key={id} 
-                    onClick={() => {
-                      setActiveThesis(id);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    className="group cursor-pointer"
-                  >
-                    <div className="border-l border-white/[0.15] pl-8 py-2 group-hover:border-white/[0.4] transition-colors">
-                      <h3 className="font-serif text-3xl text-white mb-4 italic">
-                        {item.title}
-                      </h3>
-                      <p className="font-sans text-sm text-[#cbd5e1] leading-loose font-light mb-8 max-w-xl">
-                        {item.summary}
+              {activeTab === 'structure' && (
+                <div>
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Architecture</span>
+                  <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
+                    The holding company model isolates operational friction from capital allocation.
+                  </h2>
+                  <div className="grid md:grid-cols-2 gap-16 max-w-3xl">
+                    <div>
+                      <span className="font-serif text-2xl text-white mb-4 block italic">Tactical Subsidiaries</span>
+                      <p className="font-sans text-sm text-[#cbd5e1] leading-relaxed font-light">
+                        Our owned-and-operated brands function as the market interface. They originate opportunities in government contracting, heavy equipment, and commercial logistics directly from operators.
                       </p>
-                      <div className="flex items-center gap-6">
-                        <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b]">
-                          Entity <span className="text-[#cbd5e1] font-medium ml-2">{item.vehicle.name}</span>
-                        </span>
-                        <span className="w-8 h-px bg-white/[0.05] group-hover:bg-white/[0.2] transition-colors"></span>
-                        <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] group-hover:text-white flex items-center gap-2 transition-colors">
-                          Read Memo <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-                        </span>
+                    </div>
+                    <div>
+                      <span className="font-serif text-2xl text-white mb-4 block italic">The Apex Entity</span>
+                      <p className="font-sans text-sm text-[#cbd5e1] leading-relaxed font-light">
+                        Rare Structure serves solely as the structuring and routing layer. We translate raw operational flow into pristine, senior-secured credit instruments.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'theses' && (
+                <div>
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Investment Logic</span>
+                  <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
+                    Active Investment Theses.
+                  </h2>
+                  
+                  <div className="space-y-16 max-w-2xl">
+                    {Object.entries(THESIS_DATA).map(([id, item]) => (
+                      <div 
+                        key={id} 
+                        onClick={() => setActiveThesis(id)}
+                        className="group cursor-pointer"
+                      >
+                        <div className="border-l border-white/[0.15] pl-8 py-2 group-hover:border-white/[0.4] transition-colors">
+                          <h3 className="font-serif text-3xl text-white mb-4 italic">
+                            {item.title}
+                          </h3>
+                          <p className="font-sans text-sm text-[#cbd5e1] leading-loose font-light mb-8 max-w-xl">
+                            {item.summary}
+                          </p>
+                          <div className="flex items-center gap-6">
+                            <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b]">
+                              Entity <span className="text-[#cbd5e1] font-medium ml-2">{item.vehicle.name}</span>
+                            </span>
+                            <span className="w-8 h-px bg-white/[0.05] group-hover:bg-white/[0.2] transition-colors"></span>
+                            <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] group-hover:text-white flex items-center gap-2 transition-colors">
+                              Read Memo <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                            </span>
+                          </div>
+                        </div>
                       </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'routing' && (
+                <div>
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Capabilities</span>
+                  <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
+                    Precision engineering applied to private markets.
+                  </h2>
+                  
+                  <div className="space-y-16 max-w-2xl">
+                    {[
+                      { title: "Telemetry", desc: "We map operational metrics across the middle market well before capital is formally requested, creating an adversarial advantage in origination." },
+                      { title: "Structuring", desc: "Every transaction is meticulously pre-structured to meet the exact yield, duration, and covenant requirements of our capital syndicate." },
+                      { title: "Syndication", desc: "We route senior-secured paper directly to institutional credit funds, bypassing traditional advisory and brokerage channels entirely." }
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex gap-8 items-start border-l border-white/[0.1] pl-8">
+                        <div className="flex-1">
+                          <h3 className="font-serif text-2xl text-white mb-3 italic">{item.title}</h3>
+                          <p className="font-sans text-sm text-[#cbd5e1] leading-loose font-light">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'access' && (
+                <div>
+                  <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Institutional Access</span>
+                  <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24">
+                    By invitation only.
+                  </h2>
+                  
+                  <div className="max-w-md space-y-12">
+                    <div>
+                      <p className="font-sans text-sm text-[#cbd5e1] leading-relaxed font-light mb-6">
+                        Access to the Rare Structure routing infrastructure is restricted to existing syndicate partners.
+                      </p>
+                      <a href="#" className="inline-block font-sans text-[10px] uppercase tracking-[0.2em] text-white border-b border-white/30 pb-1 hover:border-white transition-colors">
+                        Partner Authentication
+                      </a>
+                    </div>
+                    
+                    <div>
+                      <p className="font-sans text-sm text-[#cbd5e1] leading-relaxed font-light mb-6">
+                        For general firm inquiries, please correspond via the address below.
+                      </p>
+                      <a href="mailto:inquiries@rarestructure.com" className="inline-block font-sans text-[10px] uppercase tracking-[0.2em] text-[#94a3b8] hover:text-white transition-colors">
+                        inquiries@rarestructure.com
+                      </a>
                     </div>
                   </div>
-                ))}
-              </div>
-            </section>
-
-            <section id="routing" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Capabilities</span>
-              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
-                Precision engineering applied to private markets.
-              </h2>
-              
-              <div className="space-y-16 max-w-2xl">
-                {[
-                  { title: "Telemetry", desc: "We map operational metrics across the middle market well before capital is formally requested, creating an adversarial advantage in origination." },
-                  { title: "Structuring", desc: "Every transaction is meticulously pre-structured to meet the exact yield, duration, and covenant requirements of our capital syndicate." },
-                  { title: "Syndication", desc: "We route senior-secured paper directly to institutional credit funds, bypassing traditional advisory and brokerage channels entirely." }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex gap-8 items-start border-l border-white/[0.1] pl-8">
-                    <div className="flex-1">
-                      <h3 className="font-serif text-2xl text-white mb-3 italic">{item.title}</h3>
-                      <p className="font-sans text-sm text-[#cbd5e1] leading-loose font-light">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section id="access" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Institutional Access</span>
-              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24">
-                By invitation only.
-              </h2>
-              
-              <div className="max-w-md space-y-12">
-                <div>
-                  <p className="font-sans text-sm text-[#cbd5e1] leading-relaxed font-light mb-6">
-                    Access to the Rare Structure routing infrastructure is restricted to existing syndicate partners.
-                  </p>
-                  <a href="#" className="inline-block font-sans text-[10px] uppercase tracking-[0.2em] text-white border-b border-white/30 pb-1 hover:border-white transition-colors">
-                    Partner Authentication
-                  </a>
                 </div>
-                
-                <div>
-                  <p className="font-sans text-sm text-[#cbd5e1] leading-relaxed font-light mb-6">
-                    For general firm inquiries, please correspond via the address below.
-                  </p>
-                  <a href="mailto:inquiries@rarestructure.com" className="inline-block font-sans text-[10px] uppercase tracking-[0.2em] text-[#94a3b8] hover:text-white transition-colors">
-                    inquiries@rarestructure.com
-                  </a>
-                </div>
-              </div>
-            </section>
-          </>
-        )}
+              )}
+            </div>
+          )}
+        </div>
 
-        <footer className="px-8 py-8 md:px-24 md:py-12 lg:px-32 lg:py-12 border-t border-white/[0.04] flex justify-between items-center bg-[#030814]">
+        <footer className="px-8 py-8 md:px-24 md:py-12 lg:px-32 lg:py-12 border-t border-white/[0.04] flex justify-between items-center bg-[#030814] mt-auto">
           <span className="font-serif text-lg text-[#64748b] italic">
             &copy; {new Date().getFullYear()} Rare Structure HoldCo.
           </span>
