@@ -14,6 +14,10 @@ const THESIS_DATA = {
         text: 'Despite having guaranteed government contracts, mid-sized civil contractors struggle to buy the heavy machinery required to actually do the work. Traditional banks do not understand how to value specialized construction equipment, so they refuse to lend against it.'
       },
       {
+        heading: 'Core Insight',
+        text: 'The government contracts themselves are bankable, but the physical equipment required to execute them is entirely misunderstood by traditional credit markets.'
+      },
+      {
         heading: 'Strategy',
         text: 'This creates a massive gap. The work is guaranteed by the government, the contractors are ready, but the machinery is missing. We step into this gap by purchasing the equipment outright and leasing it directly to the contractors.'
       },
@@ -46,6 +50,10 @@ const THESIS_DATA = {
         text: 'Most small and mid-sized contractors cannot afford the massive overhead required to meet these new standards. As a result, thousands of capable companies are being locked out of the federal contracting market entirely.'
       },
       {
+        heading: 'Core Insight',
+        text: 'Federal compliance is no longer just a legal checklist; it has become the primary barrier to entry. Companies that solve the compliance layer essentially hold absolute monopolies over their agency relationships.'
+      },
+      {
         heading: 'Strategy',
         text: 'The federal budget is still growing, but the pool of companies allowed to bid on the work is shrinking. We build and finance specialized, fully compliant logistics companies that step in to win the contracts left behind by those who couldn\'t adapt.'
       },
@@ -76,6 +84,10 @@ const THESIS_DATA = {
       {
         heading: 'Market Dynamics',
         text: 'As supply chains tighten, major manufacturers and distributors are consolidating their vendor lists. They require logistics partners who can guarantee massive capacity and seamless technological integration. Small operators cannot meet these thresholds, resulting in a systemic mispricing of routes and equipment.'
+      },
+      {
+        heading: 'Core Insight',
+        text: 'Enterprise shippers care about uninterrupted capacity and vendor consolidation far more than they care about bottom-line transit rates. Aggregating capacity yields immense pricing power.'
       },
       {
         heading: 'Strategy',
