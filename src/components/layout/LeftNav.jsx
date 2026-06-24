@@ -11,29 +11,27 @@ export const LeftNav = ({ activeTab, onTabChange }) => {
   ));
 
   return (
-    <nav className="z-40 flex w-full flex-col justify-between border-b border-line-soft bg-canvas p-8 shadow-nav md:fixed md:h-screen md:w-1/3 md:border-b-0 md:border-r md:p-16 lg:w-1/4">
+    <nav className="z-40 flex w-full flex-col border-b border-line-soft bg-canvas p-8 shadow-nav md:fixed md:h-screen md:w-sidebar md:border-b-0 md:border-r md:p-10">
       <div>
         <button
           onClick={() => onTabChange(home)}
           aria-label="Rare Structure — home"
           className="block text-left focus-visible:underline focus-visible:underline-offset-4 focus-visible:outline-none"
         >
-          <h1 className="mb-1 font-serif text-2xl font-medium tracking-wide text-ink lg:text-3xl">
-            Rare Structure
-          </h1>
+          <h1 className="font-serif text-2xl font-medium tracking-wide text-ink">Rare Structure</h1>
         </button>
-        <Label tone="muted" className="block">
+        <Label tone="muted" className="mt-1 block">
           Merchant Bank
         </Label>
 
-        {/* Mobile nav — registry-driven, visible below md (desktop uses the rail) */}
+        {/* Mobile nav — registry-driven, visible below md */}
         <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 pl-5 md:hidden">{items}</div>
       </div>
 
-      {/* Desktop nav — the fixed left rail */}
-      <div className="mt-32 hidden flex-col gap-10 md:flex">{items}</div>
-
-      <div className="hidden h-[44px] md:block" />
+      {/* Desktop nav — optically centered in the rail */}
+      <div className="hidden flex-1 flex-col justify-center md:flex">
+        <div className="flex flex-col gap-8">{items}</div>
+      </div>
     </nav>
   );
 };
