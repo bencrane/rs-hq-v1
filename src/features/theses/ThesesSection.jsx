@@ -10,10 +10,18 @@ export const ThesesSection = ({ onThesisSelect }) => (
   <Section eyebrow="Investment Logic" headline="Active Investment Theses.">
     <div className="space-y-16">
       {Object.entries(THESIS_DATA).map(([id, item]) => (
-        <button
+        <div
           key={id}
+          role="button"
+          tabIndex={0}
           onClick={() => onThesisSelect(id)}
-          className="group block w-full rounded-sm text-left focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-muted focus-visible:ring-offset-4 focus-visible:ring-offset-canvas"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onThesisSelect(id);
+            }
+          }}
+          className="group block w-full cursor-pointer rounded-sm text-left focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-muted focus-visible:ring-offset-4 focus-visible:ring-offset-canvas"
         >
           <Rail interactive className="py-2">
             <Subhead className="mb-4">{item.title}</Subhead>
@@ -26,7 +34,7 @@ export const ThesesSection = ({ onThesisSelect }) => (
               <ArrowLink as="span">Read Memo</ArrowLink>
             </div>
           </Rail>
-        </button>
+        </div>
       ))}
     </div>
   </Section>

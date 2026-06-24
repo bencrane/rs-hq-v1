@@ -19,8 +19,8 @@ export const Section = ({
 }) => {
   const band =
     tier === "vehicle"
-      ? "min-h-[7rem] md:min-h-headline-lg"
-      : "min-h-[8rem] md:min-h-headline";
+      ? "min-h-[7rem] md:min-h-vehicle-band"
+      : "min-h-[8rem] md:min-h-section-band";
   return (
     <div>
       {eyebrow && <Eyebrow className="mb-10">{eyebrow}</Eyebrow>}

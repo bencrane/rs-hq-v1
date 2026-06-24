@@ -4,6 +4,8 @@
 // Rare Structure — design tokens (the single source of truth).
 // Change a brand value HERE and it propagates everywhere. Nothing below this
 // file should hardcode a hex, a font, a divider opacity, or a content width.
+// (Webfont *loading* also lives in index.html's Google Fonts link — keep the
+//  family names there in sync with fontFamily below.)
 //
 // Two type voices encode the positioning:
 //   serif (Cormorant Garamond) → the display / "wealth" voice
@@ -20,11 +22,12 @@ export default {
         canvas: "#040a18", // page background
         sunken: "#030814", // recessed surface (footer)
 
-        // Text ramp — display → prose → metadata
+        // Text ramp — display → prose → metadata. faint clears WCAG AA (4.7:1)
+        // on canvas; it is the resting color of nav/pager controls.
         ink: "#ffffff", // primary display text
         body: "#cbd5e1", // body copy
         muted: "#94a3b8", // secondary / subtitles
-        faint: "#64748b", // metadata / labels (dim)
+        faint: "#717f95", // metadata / labels (dim, AA-compliant)
 
         // Hairlines — three named tiers replace ~6 ad-hoc white/[0.x] opacities
         line: {
@@ -34,11 +37,8 @@ export default {
         },
 
         // Signal — the one accent. A restrained brass for "live" states only
-        // (active nav, active step, hover). Stealth-wealth: used sparingly.
-        signal: {
-          DEFAULT: "#b79a6b",
-          dim: "rgba(183,154,107,0.4)",
-        },
+        // (active nav, hover). Stealth-wealth: used sparingly.
+        signal: "#b79a6b",
       },
 
       fontFamily: {
@@ -51,33 +51,35 @@ export default {
       // across breakpoints, no 4xl/6xl/8xl jumps), plus a larger vehicle tier.
       fontSize: {
         eyebrow: ["0.625rem", { lineHeight: "1", letterSpacing: "0.2em" }],
-        meta: ["0.6875rem", { lineHeight: "1.4", letterSpacing: "0.18em" }],
         display: ["clamp(2.5rem, 4vw, 3.5rem)", { lineHeight: "1.1", letterSpacing: "-0.01em" }],
         "display-lg": ["clamp(3.25rem, 7vw, 5.5rem)", { lineHeight: "1.04", letterSpacing: "-0.02em" }],
       },
 
-      // One content measure (prose column) — replaces per-section max-w soup
+      // Content measures — one prose column, one wide (two-up), one narrow (contact)
       maxWidth: {
         measure: "42rem", // ~70ch prose
         "measure-wide": "48rem", // two-column content blocks
+        "measure-narrow": "28rem", // contact / short forms
       },
 
-      // Reserved headline band — fixed slot height so body always starts at the
-      // same y across tabs. Tuned against the longest corporate headline.
+      // Reserved headline bands — fixed slot heights so the content slot starts
+      // at the same y across tabs. Named by ROLE (the vehicle band is shorter
+      // because the dossier name is one line; the section band fits 3 lines).
       minHeight: {
-        headline: "11.5rem",
-        "headline-lg": "10rem",
+        "section-band": "11.5rem",
+        "vehicle-band": "9rem",
       },
 
-      // Frame rhythm — the hang line and slot gaps, named once
+      // Frame rhythm — the hang line, named once
       spacing: {
-        "frame-top": "16rem", // canvas top offset (the hang line)
+        "frame-top": "16rem",
         "frame-top-md": "12rem",
         "frame-top-sm": "8rem",
       },
 
-      transitionTimingFunction: {
-        "out-quint": "cubic-bezier(0.22, 1, 0.36, 1)",
+      // Chrome shadow — keep the one drop-shadow off the literal color plane
+      boxShadow: {
+        nav: "4px 0 24px rgba(0,0,0,0.2)",
       },
     },
   },

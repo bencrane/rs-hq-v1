@@ -6,7 +6,7 @@ import { SECTIONS } from "./lib/sections";
 import { ThesisDetailView } from "./features/theses/ThesisDetailView";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState("firm");
+  const [activeTab, setActiveTab] = useState(SECTIONS[0].id);
   const [activeThesis, setActiveThesis] = useState(null);
 
   const handleTabClick = (id) => {
