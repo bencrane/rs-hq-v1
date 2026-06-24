@@ -47,12 +47,13 @@ export default {
         sans: ["Inter", "system-ui", "sans-serif"],
       },
 
-      // Fluid display scale — ONE size for all corporate heroes (auto-consistent
-      // across breakpoints, no 4xl/6xl/8xl jumps), plus a larger vehicle tier.
+      // Fluid display scale — ONE size for every headline on every view (tabs and
+      // the dossier alike). The 3.5rem cap is load-bearing: it is the largest size
+      // that keeps the longest headline (Structure, 80 chars) at 3 lines inside the
+      // reserved band, so content stays pinned. No second/"vehicle" tier exists.
       fontSize: {
         eyebrow: ["0.625rem", { lineHeight: "1", letterSpacing: "0.2em" }],
         display: ["clamp(2.5rem, 4vw, 3.5rem)", { lineHeight: "1.1", letterSpacing: "-0.01em" }],
-        "display-lg": ["clamp(3.25rem, 7vw, 5.5rem)", { lineHeight: "1.04", letterSpacing: "-0.02em" }],
       },
 
       // Content measures — one prose column, one wide (two-up), one narrow (contact)
@@ -62,12 +63,11 @@ export default {
         "measure-narrow": "28rem", // contact / short forms
       },
 
-      // Reserved headline bands — fixed slot heights so the content slot starts
-      // at the same y across tabs. Named by ROLE (the vehicle band is shorter
-      // because the dossier name is one line; the section band fits 3 lines).
+      // Reserved headline band — ONE fixed slot height for every view, so the
+      // content slot begins at the same y everywhere. Fits the longest headline
+      // (Structure, 3 lines) with slack; absorbs the dossier name + role sub-label.
       minHeight: {
-        "section-band": "11.5rem",
-        "vehicle-band": "9rem",
+        "headline-band": "11.5rem",
       },
 
       // Frame rhythm — the hang line, named once

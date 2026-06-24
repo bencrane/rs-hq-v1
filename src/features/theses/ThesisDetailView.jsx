@@ -30,7 +30,6 @@ export const ThesisDetailView = ({ thesisId, onBack }) => {
     <Section
       eyebrow={`Platform: ${data.title}`}
       headline={`${data.vehicle.name}.`}
-      tier="vehicle"
       headlineMeta={<Label tone="muted">{data.vehicle.role}</Label>}
     >
       <div className="flex min-h-[360px] flex-col justify-between">
