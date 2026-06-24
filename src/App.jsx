@@ -248,7 +248,7 @@ export default function App() {
         ) : (
           <>
             {/* Unified Structural Paddings across all sections: px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 */}
-            <section id="firm" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32 border-b border-white/[0.04]">
+            <section id="firm" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
               <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.05] tracking-tight mb-12">
                 Systematic origination.<br />
                 <span className="text-[#94a3b8] italic">Institutional capital.</span>
@@ -260,7 +260,7 @@ export default function App() {
               </div>
             </section>
 
-            <section id="structure" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32 border-b border-white/[0.04]">
+            <section id="structure" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
               <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Architecture</span>
               <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
                 The holding company model isolates operational friction from capital allocation.
@@ -281,7 +281,7 @@ export default function App() {
               </div>
             </section>
 
-            <section id="theses" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32 border-b border-white/[0.04]">
+            <section id="theses" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
               <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Investment Logic</span>
               <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
                 Active Investment Theses.
@@ -319,7 +319,7 @@ export default function App() {
               </div>
             </section>
 
-            <section id="routing" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32 border-b border-white/[0.04]">
+            <section id="routing" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
               <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Capabilities</span>
               <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
                 Precision engineering applied to private markets.
@@ -341,7 +341,7 @@ export default function App() {
               </div>
             </section>
 
-            <section id="access" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32">
+            <section id="access" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32">
               <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Institutional Access</span>
               <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24">
                 By invitation only.
