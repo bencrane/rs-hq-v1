@@ -6,16 +6,20 @@ const THESIS_DATA = {
     summary: 'Infrastructure contractors have massive backlogs but cannot finance the equipment needed to do the work. We provide the heavy machinery they need.',
     memo: [
       {
-        heading: 'Context',
+        heading: 'Overview',
         text: 'The United States is undergoing a massive, federally mandated infrastructure rebuild. The contractors tasked with this work have record-high project backlogs.'
       },
       {
-        heading: 'The Problem',
+        heading: 'Market Dynamics',
         text: 'Despite having guaranteed government contracts, mid-sized civil contractors struggle to buy the heavy machinery required to actually do the work. Traditional banks do not understand how to value specialized construction equipment, so they refuse to lend against it.'
       },
       {
-        heading: 'The Opportunity',
+        heading: 'Strategy',
         text: 'This creates a massive gap. The work is guaranteed by the government, the contractors are ready, but the machinery is missing. We step into this gap by purchasing the equipment outright and leasing it directly to the contractors.'
+      },
+      {
+        heading: 'Execution',
+        text: 'EquipmentWork operates as our direct market interface. We procure specialized yellow iron and lease it directly to contractors holding federal awards, managing the physical asset lifecycle from procurement to liquidation.'
       }
     ],
     vehicle: {
@@ -34,16 +38,20 @@ const THESIS_DATA = {
     summary: 'The government is making it harder for small companies to win federal contracts due to strict new compliance rules. We build compliant entities to capture this abandoned work.',
     memo: [
       {
-        heading: 'Context',
+        heading: 'Overview',
         text: 'The Department of Defense and other federal agencies have rolled out extremely strict new compliance rules for anyone they do business with, especially regarding supply chain security and data protection.'
       },
       {
-        heading: 'The Problem',
+        heading: 'Market Dynamics',
         text: 'Most small and mid-sized contractors cannot afford the massive overhead required to meet these new standards. As a result, thousands of capable companies are being locked out of the federal contracting market entirely.'
       },
       {
-        heading: 'The Opportunity',
+        heading: 'Strategy',
         text: 'The federal budget is still growing, but the pool of companies allowed to bid on the work is shrinking. We build and finance specialized, fully compliant logistics companies that step in to win the contracts left behind by those who couldn\'t adapt.'
+      },
+      {
+        heading: 'Execution',
+        text: 'Government Contracted serves as our compliant supply chain hub. We finance the clearance, cybersecurity infrastructure, and specialized working capital necessary to execute the federal contracts that traditional operators can no longer bid on.'
       }
     ],
     vehicle: {
@@ -54,6 +62,38 @@ const THESIS_DATA = {
         { label: 'Asset Focus', value: 'Federal Receivables' },
         { label: 'Timeline', value: '1 to 2 Years' },
         { label: 'Counterparty', value: 'US Government' }
+      ]
+    }
+  },
+  'commercial-logistics': {
+    title: 'Commercial Logistics',
+    summary: 'The fragmentation of commercial freight creates structural pricing inefficiencies. We deploy capital to consolidate regional transit routes and equipment.',
+    memo: [
+      {
+        heading: 'Overview',
+        text: 'The commercial logistics sector remains highly fragmented. The vast majority of regional freight is handled by undercapitalized owner-operators who lack the infrastructure to scale.'
+      },
+      {
+        heading: 'Market Dynamics',
+        text: 'As supply chains tighten, major manufacturers and distributors are consolidating their vendor lists. They require logistics partners who can guarantee massive capacity and seamless technological integration. Small operators cannot meet these thresholds, resulting in a systemic mispricing of routes and equipment.'
+      },
+      {
+        heading: 'Strategy',
+        text: 'We do not compete on rate; we compete on capacity. We identify high-yield regional transit corridors and inject capital to deploy standardized, fully compliant fleets that can instantly integrate with enterprise supply chains.'
+      },
+      {
+        heading: 'Execution',
+        text: 'Through Licensed to Haul, we rapidly acquire and deploy commercial rolling stock into targeted regional networks. We pair this hardware advantage with centralized routing infrastructure to lock in long-term enterprise contracts.'
+      }
+    ],
+    vehicle: {
+      name: 'Licensed to Haul',
+      role: 'Commercial Freight & Logistics',
+      metrics: [
+        { label: 'Target Returns', value: '16.0% - 20.0%' },
+        { label: 'Asset Focus', value: 'Rolling Stock' },
+        { label: 'Timeline', value: '2 to 4 Years' },
+        { label: 'Security', value: 'Asset Ownership' }
       ]
     }
   }
@@ -98,7 +138,7 @@ const ThesisDetailView = ({ thesisId, onBack }) => {
 
         {/* Operational Vehicle - completely unboxed, integrated linearly */}
         <div className="border-t border-white/[0.05] pt-16">
-          <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">The Vehicle</span>
+          <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">Structure</span>
           <h4 className="font-serif text-4xl text-white mb-3">{data.vehicle.name}</h4>
           <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-[#94a3b8] block mb-12">
             {data.vehicle.role}
