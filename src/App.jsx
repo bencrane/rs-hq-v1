@@ -123,11 +123,18 @@ const ThesisDetailView = ({ thesisId, onBack }) => {
 
   return (
     <div className="min-h-screen animate-in fade-in duration-700 pb-32">
-      <div className="px-8 md:px-16 lg:px-32 pt-8 md:pt-16 max-w-4xl">
-        <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">Investment Memo</span>
-        <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.05] tracking-tight mb-24">
-          {data.title}.
-        </h2>
+      <div className="px-8 md:px-16 lg:px-32 pt-24 md:pt-32 lg:pt-40 max-w-4xl">
+        <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">
+          Platform: {data.title}
+        </span>
+        <div className="inline-block border border-white/[0.15] px-8 py-6 md:px-12 md:py-8 mb-24">
+          <h2 className="font-serif text-4xl md:text-6xl text-white font-light tracking-tight">
+            {data.vehicle.name}.
+          </h2>
+          <span className="font-sans text-[9px] uppercase tracking-[0.15em] text-[#94a3b8] mt-3 block">
+            {data.vehicle.role}
+          </span>
+        </div>
 
         <div className="space-y-16 mb-32">
           {data.memo.map((section, idx) => (
@@ -140,23 +147,7 @@ const ThesisDetailView = ({ thesisId, onBack }) => {
           ))}
         </div>
 
-        {/* Operational Vehicle - completely unboxed, integrated linearly */}
-        <div className="border-t border-white/[0.05] pt-16">
-          <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">Structure</span>
-          <h4 className="font-serif text-4xl text-white mb-3">{data.vehicle.name}</h4>
-          <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-[#94a3b8] block mb-12">
-            {data.vehicle.role}
-          </span>
-
-          <div className="grid grid-cols-2 gap-8 md:gap-16">
-            {data.vehicle.metrics.map((metric, idx) => (
-              <div key={idx} className="flex flex-col border-b border-white/[0.05] pb-4">
-                <span className="font-sans text-[8px] uppercase tracking-[0.2em] text-[#64748b] mb-2">{metric.label}</span>
-                <span className="font-serif text-xl text-white italic">{metric.value}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* End of memo */}
 
       </div>
     </div>
