@@ -235,7 +235,7 @@ export default function App() {
           {activeThesis ? (
             <ThesisDetailView thesisId={activeThesis} onBack={() => setActiveThesis(null)} />
           ) : (
-            <div className="px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 max-w-4xl min-h-[600px] animate-in fade-in duration-300 pb-32">
+            <div className="px-8 md:px-16 lg:px-32 py-16 md:py-24 max-w-4xl min-h-[calc(100vh-120px)] flex flex-col justify-center animate-in fade-in duration-300">
               {activeTab === 'firm' && (
                 <div>
                   <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">The Firm</span>
