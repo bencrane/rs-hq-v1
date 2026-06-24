@@ -70,12 +70,15 @@ export default {
         "headline-band": "11.5rem",
       },
 
-      // Sidebar — a deliberate fixed width, not a loose fraction.
+      // Sidebar — a deliberate fixed width, not a loose fraction. The rail is the
+      // narrow-width variant: a thin stripe of roman numerals.
       width: {
         sidebar: "17rem",
+        rail: "4rem",
       },
       margin: {
         sidebar: "17rem",
+        rail: "4rem",
       },
 
       // Chrome shadow — keep the one drop-shadow off the literal color plane
