@@ -29,12 +29,6 @@ const THESIS_DATA = {
     vehicle: {
       name: 'EquipmentWork',
       role: 'Heavy Machinery Leasing & Deployment',
-      metrics: [
-        { label: 'Target Returns', value: '14.5% - 18.0%' },
-        { label: 'Asset Focus', value: 'Construction Machinery' },
-        { label: 'Timeline', value: '3 to 5 Years' },
-        { label: 'Security', value: 'Physical Equipment Ownership' }
-      ]
     }
   },
   'federal-compliance': {
@@ -65,12 +59,6 @@ const THESIS_DATA = {
     vehicle: {
       name: 'Government Contracted',
       role: 'Compliant Federal Supply Chain',
-      metrics: [
-        { label: 'Target Returns', value: '12.0% - 15.5%' },
-        { label: 'Asset Focus', value: 'Federal Receivables' },
-        { label: 'Timeline', value: '1 to 2 Years' },
-        { label: 'Counterparty', value: 'US Government' }
-      ]
     }
   },
   'commercial-logistics': {
@@ -101,12 +89,6 @@ const THESIS_DATA = {
     vehicle: {
       name: 'Licensed to Haul',
       role: 'Commercial Freight & Logistics',
-      metrics: [
-        { label: 'Target Returns', value: '16.0% - 20.0%' },
-        { label: 'Asset Focus', value: 'Rolling Stock' },
-        { label: 'Timeline', value: '2 to 4 Years' },
-        { label: 'Security', value: 'Asset Ownership' }
-      ]
     }
   }
 };
@@ -123,31 +105,31 @@ const ThesisDetailView = ({ thesisId, onBack }) => {
 
   return (
     <div className="min-h-screen animate-in fade-in duration-700 pb-32">
-      <div className="px-8 md:px-16 lg:px-32 pt-24 md:pt-32 lg:pt-40 max-w-4xl">
-        <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">
+      <div className="px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 max-w-4xl">
+        <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">
           Platform: {data.title}
         </span>
-        <div className="inline-block border border-white/[0.15] px-8 py-6 md:px-12 md:py-8 mb-24">
-          <h2 className="font-serif text-4xl md:text-6xl text-white font-light tracking-tight">
+        
+        {/* Unboxed Entity Title - Strict Left Alignment */}
+        <div className="mb-32">
+          <h2 className="font-serif text-6xl md:text-8xl text-white font-light tracking-tight mb-4">
             {data.vehicle.name}.
           </h2>
-          <span className="font-sans text-[9px] uppercase tracking-[0.15em] text-[#94a3b8] mt-3 block">
+          <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-[#94a3b8] block">
             {data.vehicle.role}
           </span>
         </div>
 
-        <div className="space-y-16 mb-32">
+        <div className="space-y-24">
           {data.memo.map((section, idx) => (
             <div key={idx}>
-              <h3 className="font-serif text-2xl text-white mb-6 italic">{idx + 1}. {section.heading}</h3>
-              <p className="font-sans text-sm md:text-base text-[#cbd5e1] leading-loose font-light">
+              <h3 className="font-serif text-3xl text-white mb-6 italic">{idx + 1}. {section.heading}</h3>
+              <p className="font-sans text-sm md:text-base text-[#cbd5e1] leading-loose font-light max-w-2xl">
                 {section.text}
               </p>
             </div>
           ))}
         </div>
-
-        {/* End of memo */}
 
       </div>
     </div>
@@ -212,7 +194,8 @@ export default function App() {
           <ThesisDetailView thesisId={activeThesis} onBack={() => setActiveThesis(null)} />
         ) : (
           <>
-            <section id="firm" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
+            {/* Unified Structural Paddings across all sections: px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 */}
+            <section id="firm" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32 border-b border-white/[0.04]">
               <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.05] tracking-tight mb-12">
                 Systematic origination.<br />
                 <span className="text-[#94a3b8] italic">Institutional capital.</span>
@@ -224,9 +207,9 @@ export default function App() {
               </div>
             </section>
 
-            <section id="structure" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">Architecture</span>
-              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-12 max-w-2xl">
+            <section id="structure" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32 border-b border-white/[0.04]">
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Architecture</span>
+              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
                 The holding company model isolates operational friction from capital allocation.
               </h2>
               <div className="grid md:grid-cols-2 gap-16 max-w-3xl">
@@ -245,9 +228,9 @@ export default function App() {
               </div>
             </section>
 
-            <section id="theses" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">Investment Logic</span>
-              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-16 max-w-2xl">
+            <section id="theses" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32 border-b border-white/[0.04]">
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Investment Logic</span>
+              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
                 Active Investment Theses.
               </h2>
               
@@ -283,9 +266,9 @@ export default function App() {
               </div>
             </section>
 
-            <section id="routing" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">Capabilities</span>
-              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-16 max-w-2xl">
+            <section id="routing" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32 border-b border-white/[0.04]">
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Capabilities</span>
+              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24 max-w-2xl">
                 Precision engineering applied to private markets.
               </h2>
               
@@ -305,9 +288,9 @@ export default function App() {
               </div>
             </section>
 
-            <section id="access" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32">
-              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">Institutional Access</span>
-              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-12">
+            <section id="access" className="min-h-screen flex flex-col px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 pb-32">
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">Institutional Access</span>
+              <h2 className="font-serif text-4xl md:text-6xl text-white font-light leading-[1.1] mb-24">
                 By invitation only.
               </h2>
               
