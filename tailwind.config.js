@@ -70,13 +70,6 @@ export default {
         "headline-band": "11.5rem",
       },
 
-      // The hang line — viewport-relative so the content sits at the same optical
-      // depth on every screen and the same place on every tab. One value.
-      spacing: {
-        hang: "30vh",
-        "hang-sm": "16vh",
-      },
-
       // Sidebar — a deliberate fixed width, not a loose fraction.
       width: {
         sidebar: "17rem",

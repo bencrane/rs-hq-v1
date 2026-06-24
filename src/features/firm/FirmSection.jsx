@@ -1,5 +1,11 @@
 import { Section } from "../../components/layout/Section";
-import { Entry } from "../../components/ui/Entry";
+import { PagedContent } from "../../components/ui/PagedContent";
+
+const ITEMS = [
+  {
+    body: "Rare Structure operates exclusively at the intersection of quantitative intelligence and senior-secured credit. We identify, structure, and syndicate private transaction flow for a select consortium of institutional partners. We do not accept unsolicited mandates.",
+  },
+];
 
 export const FirmSection = () => (
   <Section
@@ -7,11 +13,6 @@ export const FirmSection = () => (
     headline="Systematic origination."
     subtitle="Institutional capital."
   >
-    <Entry>
-      Rare Structure operates exclusively at the intersection of quantitative
-      intelligence and senior-secured credit. We identify, structure, and
-      syndicate private transaction flow for a select consortium of institutional
-      partners. We do not accept unsolicited mandates.
-    </Entry>
+    <PagedContent items={ITEMS} />
   </Section>
 );
