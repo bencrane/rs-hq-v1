@@ -1,7 +1,5 @@
 import { Section } from "../../components/layout/Section";
-import { Subhead } from "../../components/typography/Subhead";
-import { BodyText } from "../../components/typography/BodyText";
-import { Rail } from "../../components/ui/Rail";
+import { Entry } from "../../components/ui/Entry";
 
 const CAPABILITIES = [
   {
@@ -21,11 +19,10 @@ const CAPABILITIES = [
 export const CapabilitiesSection = () => (
   <Section eyebrow="Capabilities" headline="Precision engineering applied to private markets.">
     <div className="space-y-16">
-      {CAPABILITIES.map((item) => (
-        <Rail key={item.title}>
-          <Subhead className="mb-3">{item.title}</Subhead>
-          <BodyText>{item.desc}</BodyText>
-        </Rail>
+      {CAPABILITIES.map((item, i) => (
+        <Entry key={item.title} index={String(i + 1).padStart(2, "0")} title={item.title}>
+          {item.desc}
+        </Entry>
       ))}
     </div>
   </Section>

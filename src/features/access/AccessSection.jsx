@@ -1,29 +1,31 @@
 import { Section } from "../../components/layout/Section";
-import { BodyText } from "../../components/typography/BodyText";
+import { Entry } from "../../components/ui/Entry";
 import { ArrowLink } from "../../components/ui/ArrowLink";
 
 export const AccessSection = () => (
-  <Section
-    eyebrow="Institutional Access"
-    headline="By invitation only."
-    contentClassName="max-w-measure-narrow space-y-12"
-  >
-    <div>
-      <BodyText className="mb-6">
+  <Section eyebrow="Institutional Access" headline="By invitation only.">
+    <div className="space-y-16">
+      <Entry
+        index="01"
+        meta={
+          <ArrowLink href="#" tone="muted">
+            Partner Authentication
+          </ArrowLink>
+        }
+      >
         Access to the Rare Structure routing infrastructure is restricted to
         existing syndicate partners.
-      </BodyText>
-      <ArrowLink href="#" tone="muted">
-        Partner Authentication
-      </ArrowLink>
-    </div>
-    <div>
-      <BodyText className="mb-6">
+      </Entry>
+      <Entry
+        index="02"
+        meta={
+          <ArrowLink href="mailto:inquiries@rarestructure.com" tone="muted">
+            inquiries@rarestructure.com
+          </ArrowLink>
+        }
+      >
         For general firm inquiries, please correspond via the address below.
-      </BodyText>
-      <ArrowLink href="mailto:inquiries@rarestructure.com" tone="muted">
-        inquiries@rarestructure.com
-      </ArrowLink>
+      </Entry>
     </div>
   </Section>
 );

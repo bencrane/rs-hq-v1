@@ -34,9 +34,10 @@ export const ThesisDetailView = ({ thesisId, onBack }) => {
     >
       <div className="flex min-h-[360px] flex-col justify-between">
         <div key={activeSectionIdx} className="animate-enter">
-          <Subhead className="mb-6">
-            {activeSectionIdx + 1}. {activeSection.heading}
-          </Subhead>
+          <Label className="mb-4 block">
+            {String(activeSectionIdx + 1).padStart(2, "0")}
+          </Label>
+          <Subhead className="mb-6">{activeSection.heading}</Subhead>
           <BodyText>{activeSection.text}</BodyText>
         </div>
 
