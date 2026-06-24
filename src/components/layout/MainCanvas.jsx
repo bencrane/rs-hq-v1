@@ -1,7 +1,7 @@
 export const MainCanvas = ({ children }) => (
   <main className="w-full md:w-2/3 lg:w-3/4 md:ml-auto min-h-screen flex flex-col">
     <div className="flex-grow">
-      <div className="px-8 md:px-16 lg:px-32 pt-32 md:pt-48 lg:pt-[25vh] max-w-4xl min-h-[600px] animate-in fade-in duration-300 pb-32">
+      <div className="px-8 md:px-16 lg:px-32 pt-32 md:pt-48 lg:pt-64 max-w-4xl min-h-[600px] animate-in fade-in duration-300 pb-32">
         {children}
       </div>
     </div>
