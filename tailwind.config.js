@@ -70,11 +70,19 @@ export default {
         "headline-band": "11.5rem",
       },
 
-      // Frame rhythm — the hang line, named once
+      // The hang line — viewport-relative so the content sits at the same optical
+      // depth on every screen and the same place on every tab. One value.
       spacing: {
-        "frame-top": "16rem",
-        "frame-top-md": "12rem",
-        "frame-top-sm": "8rem",
+        hang: "30vh",
+        "hang-sm": "16vh",
+      },
+
+      // Sidebar — a deliberate fixed width, not a loose fraction.
+      width: {
+        sidebar: "17rem",
+      },
+      margin: {
+        sidebar: "17rem",
       },
 
       // Chrome shadow — keep the one drop-shadow off the literal color plane
