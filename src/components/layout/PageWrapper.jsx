@@ -1,5 +1,5 @@
 export const PageWrapper = ({ children }) => (
-  <div className="min-h-screen bg-[#040a18] flex flex-col md:flex-row relative selection:bg-white/[0.1] selection:text-white">
+  <div className="relative flex min-h-screen flex-col bg-canvas md:flex-row">
     {children}
   </div>
 );
