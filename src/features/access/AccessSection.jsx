@@ -1,31 +1,30 @@
 import { Section } from "../../components/layout/Section";
-import { Entry } from "../../components/ui/Entry";
+import { PagedContent } from "../../components/ui/PagedContent";
 import { ArrowLink } from "../../components/ui/ArrowLink";
+
+const ITEMS = [
+  {
+    title: "Partner Authentication",
+    body: "Access to the Rare Structure routing infrastructure is restricted to existing syndicate partners.",
+    meta: (
+      <ArrowLink href="#" tone="muted">
+        Authenticate
+      </ArrowLink>
+    ),
+  },
+  {
+    title: "Direct Correspondence",
+    body: "For general firm inquiries, please correspond via the address below.",
+    meta: (
+      <ArrowLink href="mailto:inquiries@rarestructure.com" tone="muted">
+        inquiries@rarestructure.com
+      </ArrowLink>
+    ),
+  },
+];
 
 export const AccessSection = () => (
   <Section eyebrow="Institutional Access" headline="By invitation only.">
-    <div className="space-y-16">
-      <Entry
-        index="01"
-        meta={
-          <ArrowLink href="#" tone="muted">
-            Partner Authentication
-          </ArrowLink>
-        }
-      >
-        Access to the Rare Structure routing infrastructure is restricted to
-        existing syndicate partners.
-      </Entry>
-      <Entry
-        index="02"
-        meta={
-          <ArrowLink href="mailto:inquiries@rarestructure.com" tone="muted">
-            inquiries@rarestructure.com
-          </ArrowLink>
-        }
-      >
-        For general firm inquiries, please correspond via the address below.
-      </Entry>
-    </div>
+    <PagedContent items={ITEMS} />
   </Section>
 );

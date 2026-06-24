@@ -1,5 +1,5 @@
 import { Section } from "../../components/layout/Section";
-import { Entry } from "../../components/ui/Entry";
+import { PagedContent } from "../../components/ui/PagedContent";
 
 const ITEMS = [
   {
@@ -17,12 +17,6 @@ export const StructureSection = () => (
     eyebrow="Architecture"
     headline="The holding company model isolates operational friction from capital allocation."
   >
-    <div className="space-y-16">
-      {ITEMS.map((item, i) => (
-        <Entry key={item.title} index={String(i + 1).padStart(2, "0")} title={item.title}>
-          {item.body}
-        </Entry>
-      ))}
-    </div>
+    <PagedContent items={ITEMS} />
   </Section>
 );
