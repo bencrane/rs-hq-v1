@@ -124,14 +124,6 @@ const ThesisDetailView = ({ thesisId, onBack }) => {
   return (
     <div className="min-h-screen animate-in fade-in duration-700 pb-32">
       <div className="px-8 md:px-16 lg:px-32 pt-16 md:pt-24 lg:pt-32 max-w-4xl">
-        <button 
-          onClick={onBack}
-          className="group flex items-center gap-4 font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] hover:text-white transition-colors mb-24"
-        >
-          <span className="transform group-hover:-translate-x-1 transition-transform">←</span>
-          Return to Overview
-        </button>
-
         <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">Investment Memo</span>
         <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.05] tracking-tight mb-24">
           {data.title}.
@@ -276,20 +268,24 @@ export default function App() {
                       setActiveThesis(id);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="flex flex-col border-l border-white/[0.1] pl-8 cursor-pointer group hover:border-[#94a3b8] transition-colors"
+                    className="group cursor-pointer"
                   >
-                    <h3 className="font-serif text-2xl text-white mb-4 italic group-hover:text-[#94a3b8] transition-colors flex items-center justify-between">
-                      {item.title}
-                      <span className="font-sans text-sm opacity-0 group-hover:opacity-100 transition-opacity">Read Memo →</span>
-                    </h3>
-                    <p className="font-sans text-sm text-[#cbd5e1] leading-loose font-light mb-6">
-                      {item.summary}
-                    </p>
-                    <div className="flex items-center gap-4">
-                      <span className="h-px w-6 bg-[#64748b]"></span>
-                      <span className="font-sans text-[9px] uppercase tracking-[0.15em] text-[#94a3b8]">
-                        Operational Vehicle: <span className="text-white font-medium ml-1">{item.vehicle.name}</span>
-                      </span>
+                    <div className="border-l border-white/[0.15] pl-8 py-2 group-hover:border-white/[0.4] transition-colors">
+                      <h3 className="font-serif text-3xl text-white mb-4 italic">
+                        {item.title}
+                      </h3>
+                      <p className="font-sans text-sm text-[#cbd5e1] leading-loose font-light mb-8 max-w-xl">
+                        {item.summary}
+                      </p>
+                      <div className="flex items-center gap-6">
+                        <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b]">
+                          Entity <span className="text-[#cbd5e1] font-medium ml-2">{item.vehicle.name}</span>
+                        </span>
+                        <span className="w-8 h-px bg-white/[0.05] group-hover:bg-white/[0.2] transition-colors"></span>
+                        <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] group-hover:text-white flex items-center gap-2 transition-colors">
+                          Read Memo <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))}
