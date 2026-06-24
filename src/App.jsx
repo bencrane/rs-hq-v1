@@ -123,7 +123,7 @@ const ThesisDetailView = ({ thesisId, onBack }) => {
 
   return (
     <div className="min-h-screen animate-in fade-in duration-700 pb-32">
-      <div className="px-8 md:px-16 lg:px-32 pt-16 md:pt-24 lg:pt-32 max-w-4xl">
+      <div className="px-8 md:px-16 lg:px-32 pt-8 md:pt-16 max-w-4xl">
         <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] mb-8 block">Investment Memo</span>
         <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.05] tracking-tight mb-24">
           {data.title}.
