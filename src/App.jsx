@@ -22,11 +22,13 @@ export default function App() {
       <LeftNav activeTab={activeTab} onTabChange={handleTabClick} />
 
       <MainCanvas>
-        {activeThesis ? (
-          <ThesisDetailView thesisId={activeThesis} onBack={() => setActiveThesis(null)} />
-        ) : (
-          <ActiveSection onThesisSelect={setActiveThesis} />
-        )}
+        <div key={activeThesis ?? activeTab} className="animate-enter">
+          {activeThesis ? (
+            <ThesisDetailView thesisId={activeThesis} onBack={() => setActiveThesis(null)} />
+          ) : (
+            <ActiveSection onThesisSelect={setActiveThesis} />
+          )}
+        </div>
       </MainCanvas>
     </PageWrapper>
   );

@@ -34,7 +34,7 @@ export const ThesisDetailView = ({ thesisId, onBack }) => {
       headlineMeta={<Label tone="muted">{data.vehicle.role}</Label>}
     >
       <div className="flex min-h-[360px] flex-col justify-between">
-        <div key={activeSectionIdx} className="animate-in fade-in duration-300">
+        <div key={activeSectionIdx} className="animate-enter">
           <Subhead className="mb-6">
             {activeSectionIdx + 1}. {activeSection.heading}
           </Subhead>

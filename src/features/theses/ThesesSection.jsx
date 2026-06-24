@@ -13,7 +13,7 @@ export const ThesesSection = ({ onThesisSelect }) => (
         <button
           key={id}
           onClick={() => onThesisSelect(id)}
-          className="group block w-full text-left focus-visible:outline-none"
+          className="group block w-full rounded-sm text-left focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-muted focus-visible:ring-offset-4 focus-visible:ring-offset-canvas"
         >
           <Rail interactive className="py-2">
             <Subhead className="mb-4">{item.title}</Subhead>

@@ -8,3 +8,26 @@
     @apply selection:bg-line-strong selection:text-ink;
   }
 }
+
+/* Slot-level cross-fade. The frame stays pinned; only content opacity changes,
+   so navigating reads as the page re-typesetting in place, not swapping. */
+@keyframes rs-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-enter {
+    animation: rs-fade 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-enter {
+    animation: none;
+  }
+}
