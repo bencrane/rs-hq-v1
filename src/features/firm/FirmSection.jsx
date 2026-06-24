@@ -1,5 +1,5 @@
 import { Section } from "../../components/layout/Section";
-import { BodyText } from "../../components/typography/BodyText";
+import { Entry } from "../../components/ui/Entry";
 
 export const FirmSection = () => (
   <Section
@@ -7,11 +7,11 @@ export const FirmSection = () => (
     headline="Systematic origination."
     subtitle="Institutional capital."
   >
-    <BodyText>
+    <Entry>
       Rare Structure operates exclusively at the intersection of quantitative
       intelligence and senior-secured credit. We identify, structure, and
       syndicate private transaction flow for a select consortium of institutional
       partners. We do not accept unsolicited mandates.
-    </BodyText>
+    </Entry>
   </Section>
 );
