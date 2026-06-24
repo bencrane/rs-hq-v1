@@ -1,5 +1,5 @@
 export const MainCanvas = ({ children }) => (
-  <main className="flex min-h-screen w-full flex-col md:ml-sidebar">
+  <main className="ml-rail flex min-h-screen flex-col md:ml-sidebar">
     <div className="flex flex-1 flex-col justify-center px-8 py-16 md:px-16 lg:px-24">
       <div className="w-full max-w-4xl">{children}</div>
     </div>
