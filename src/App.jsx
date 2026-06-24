@@ -249,9 +249,10 @@ export default function App() {
           <>
             {/* Unified Structural Paddings across all sections: px-8 md:px-16 lg:px-32 pt-32 md:pt-40 lg:pt-48 */}
             <section id="firm" className="min-h-screen flex flex-col justify-center p-8 md:p-24 lg:p-32 border-b border-white/[0.04]">
-              <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-light leading-[1.05] tracking-tight mb-12">
-                Systematic origination.<br />
-                <span className="text-[#94a3b8] italic">Institutional capital.</span>
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#64748b] mb-12 block">The Firm</span>
+              <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-light leading-[1.05] tracking-tight mb-12">
+                <span className="block whitespace-nowrap">Systematic origination.</span>
+                <span className="block text-[#94a3b8] italic whitespace-nowrap">Institutional capital.</span>
               </h2>
               <div className="max-w-xl">
                 <p className="font-sans text-sm md:text-base text-[#cbd5e1] leading-loose font-light">
