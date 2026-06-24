@@ -6,12 +6,15 @@ export const ArrowLink = ({
   children,
   onClick,
   href,
+  as,
   direction = "right",
   active = false,
   className = "",
   ...rest
 }) => {
-  const Comp = href ? "a" : "button";
+  // as="span" renders a non-interactive cue (e.g. inside a clickable card),
+  // still animating on the ancestor card's group hover. No nested buttons.
+  const Comp = as || (href ? "a" : "button");
   const arrow = direction === "left" ? "←" : "→";
   const shift =
     direction === "left"

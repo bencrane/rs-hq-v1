@@ -1,40 +1,33 @@
-import { THESIS_DATA } from '../../lib/data';
-import { TrackingLabel } from '../../components/typography/TrackingLabel';
-import { SectionHeading } from '../../components/typography/SectionHeading';
+import { THESIS_DATA } from "../../lib/data";
+import { Section } from "../../components/layout/Section";
+import { Subhead } from "../../components/typography/Subhead";
+import { BodyText } from "../../components/typography/BodyText";
+import { Label } from "../../components/typography/Label";
+import { Rail } from "../../components/ui/Rail";
+import { ArrowLink } from "../../components/ui/ArrowLink";
 
 export const ThesesSection = ({ onThesisSelect }) => (
-  <div>
-    <TrackingLabel>Investment Logic</TrackingLabel>
-    <SectionHeading>
-      Active Investment Theses.
-    </SectionHeading>
-    
-    <div className="space-y-16 max-w-2xl">
+  <Section eyebrow="Investment Logic" headline="Active Investment Theses.">
+    <div className="space-y-16">
       {Object.entries(THESIS_DATA).map(([id, item]) => (
-        <div 
-          key={id} 
+        <button
+          key={id}
           onClick={() => onThesisSelect(id)}
-          className="group cursor-pointer"
+          className="group block w-full text-left focus-visible:outline-none"
         >
-          <div className="border-l border-white/[0.15] pl-8 py-2 group-hover:border-white/[0.4] transition-colors">
-            <h3 className="font-serif text-3xl text-white mb-4 italic">
-              {item.title}
-            </h3>
-            <p className="font-sans text-sm text-[#cbd5e1] leading-loose font-light mb-8 max-w-xl">
-              {item.summary}
-            </p>
+          <Rail interactive className="py-2">
+            <Subhead className="mb-4">{item.title}</Subhead>
+            <BodyText className="mb-8">{item.summary}</BodyText>
             <div className="flex items-center gap-6">
-              <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b]">
-                Entity <span className="text-[#cbd5e1] font-medium ml-2">{item.vehicle.name}</span>
-              </span>
-              <span className="w-8 h-px bg-white/[0.05] group-hover:bg-white/[0.2] transition-colors"></span>
-              <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-[#64748b] group-hover:text-white flex items-center gap-2 transition-colors">
-                Read Memo <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-              </span>
+              <Label>
+                Entity <span className="ml-2 text-body">{item.vehicle.name}</span>
+              </Label>
+              <span className="h-px w-8 bg-line transition-colors group-hover:bg-line-strong" />
+              <ArrowLink as="span">Read Memo</ArrowLink>
             </div>
-          </div>
-        </div>
+          </Rail>
+        </button>
       ))}
     </div>
-  </div>
+  </Section>
 );

@@ -52,8 +52,8 @@ export default {
       fontSize: {
         eyebrow: ["0.625rem", { lineHeight: "1", letterSpacing: "0.2em" }],
         meta: ["0.6875rem", { lineHeight: "1.4", letterSpacing: "0.18em" }],
-        display: ["clamp(2.5rem, 4.6vw, 4rem)", { lineHeight: "1.08", letterSpacing: "-0.01em" }],
-        "display-lg": ["clamp(3.5rem, 8vw, 6.5rem)", { lineHeight: "1.02", letterSpacing: "-0.02em" }],
+        display: ["clamp(2.5rem, 4vw, 3.5rem)", { lineHeight: "1.1", letterSpacing: "-0.01em" }],
+        "display-lg": ["clamp(3.25rem, 7vw, 5.5rem)", { lineHeight: "1.04", letterSpacing: "-0.02em" }],
       },
 
       // One content measure (prose column) — replaces per-section max-w soup
@@ -65,8 +65,8 @@ export default {
       // Reserved headline band — fixed slot height so body always starts at the
       // same y across tabs. Tuned against the longest corporate headline.
       minHeight: {
-        headline: "10.5rem",
-        "headline-lg": "9rem",
+        headline: "11.5rem",
+        "headline-lg": "10rem",
       },
 
       // Frame rhythm — the hang line and slot gaps, named once
