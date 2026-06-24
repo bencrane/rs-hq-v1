@@ -1,34 +1,32 @@
-export const LeftNav = ({ activeTab, onTabChange }) => {
-  const tabs = [
-    { id: 'firm', label: 'I. The Firm' },
-    { id: 'structure', label: 'II. Structure' },
-    { id: 'theses', label: 'III. Theses' },
-    { id: 'routing', label: 'IV. Routing' },
-    { id: 'access', label: 'V. Access' }
-  ];
+import { SECTIONS } from "../../lib/sections";
+import { NavItem } from "../ui/NavItem";
 
-  return (
-    <nav className="w-full md:w-1/3 lg:w-1/4 md:fixed md:h-screen p-8 md:p-16 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/[0.04] bg-[#040a18] z-40 shadow-[4px_0_24px_rgba(0,0,0,0.2)]">
-      <div>
-        <h1 className="font-serif text-2xl lg:text-3xl tracking-wide font-medium text-white mb-1 cursor-pointer" onClick={() => onTabChange('firm')}>
+export const LeftNav = ({ activeTab, onTabChange }) => (
+  <nav className="z-40 flex w-full flex-col justify-between border-b border-line-soft bg-canvas p-8 shadow-[4px_0_24px_rgba(0,0,0,0.2)] md:fixed md:h-screen md:w-1/3 md:border-b-0 md:border-r md:p-16 lg:w-1/4">
+    <div>
+      <button
+        onClick={() => onTabChange("firm")}
+        className="block text-left focus-visible:underline focus-visible:underline-offset-4 focus-visible:outline-none"
+      >
+        <h1 className="mb-1 font-serif text-2xl font-medium tracking-wide text-ink lg:text-3xl">
           Rare Structure
         </h1>
-        <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#94a3b8]">Merchant Bank</span>
-      </div>
-      
-      <div className="hidden md:flex flex-col gap-10 mt-32">
-        {tabs.map((item) => (
-          <button 
-            key={item.id}
-            onClick={() => onTabChange(item.id)}
-            className={`text-left font-serif text-lg transition-colors italic tracking-wide ${activeTab === item.id ? 'text-white' : 'text-[#94a3b8] hover:text-white'}`}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
-      
-      <div className="hidden md:block h-[44px]"></div>
-    </nav>
-  );
-};
+      </button>
+      <span className="font-mono text-eyebrow uppercase text-muted">Merchant Bank</span>
+    </div>
+
+    <div className="mt-32 hidden flex-col gap-10 md:flex">
+      {SECTIONS.map((s) => (
+        <NavItem
+          key={s.id}
+          active={activeTab === s.id}
+          onClick={() => onTabChange(s.id)}
+        >
+          {s.navLabel}
+        </NavItem>
+      ))}
+    </div>
+
+    <div className="hidden h-[44px] md:block" />
+  </nav>
+);

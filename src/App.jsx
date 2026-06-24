@@ -1,17 +1,12 @@
-import { useState } from 'react';
-import { PageWrapper } from './components/layout/PageWrapper';
-import { LeftNav } from './components/layout/LeftNav';
-import { MainCanvas } from './components/layout/MainCanvas';
-
-import { FirmSection } from './features/firm/FirmSection';
-import { StructureSection } from './features/structure/StructureSection';
-import { ThesesSection } from './features/theses/ThesesSection';
-import { CapabilitiesSection } from './features/capabilities/CapabilitiesSection';
-import { AccessSection } from './features/access/AccessSection';
-import { ThesisDetailView } from './features/theses/ThesisDetailView';
+import { useState } from "react";
+import { PageWrapper } from "./components/layout/PageWrapper";
+import { LeftNav } from "./components/layout/LeftNav";
+import { MainCanvas } from "./components/layout/MainCanvas";
+import { SECTIONS } from "./lib/sections";
+import { ThesisDetailView } from "./features/theses/ThesisDetailView";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('firm');
+  const [activeTab, setActiveTab] = useState("firm");
   const [activeThesis, setActiveThesis] = useState(null);
 
   const handleTabClick = (id) => {
@@ -19,21 +14,18 @@ export default function App() {
     setActiveThesis(null);
   };
 
+  const active = SECTIONS.find((s) => s.id === activeTab) ?? SECTIONS[0];
+  const ActiveSection = active.Component;
+
   return (
     <PageWrapper>
       <LeftNav activeTab={activeTab} onTabChange={handleTabClick} />
-      
+
       <MainCanvas>
         {activeThesis ? (
           <ThesisDetailView thesisId={activeThesis} onBack={() => setActiveThesis(null)} />
         ) : (
-          <>
-            {activeTab === 'firm' && <FirmSection />}
-            {activeTab === 'structure' && <StructureSection />}
-            {activeTab === 'theses' && <ThesesSection onThesisSelect={setActiveThesis} />}
-            {activeTab === 'routing' && <CapabilitiesSection />}
-            {activeTab === 'access' && <AccessSection />}
-          </>
+          <ActiveSection onThesisSelect={setActiveThesis} />
         )}
       </MainCanvas>
     </PageWrapper>
